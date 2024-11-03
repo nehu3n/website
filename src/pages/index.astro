@@ -1,18 +1,49 @@
 ---
 import Header from '../components/Header.astro';
+import Project from "../components/Project.astro";
 import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    title: 'Qipi',
+    description: '🦉 The blazing-fast, disk-efficient and deterministic package manager.',
+    link: 'https://github.com/nehu3n/qipi',
+    finished: false,
+  },
+  {
+    title: 'MondJS',
+    description: '🐛 Monadic error handling for JavaScript/TypeScript.',
+    link: 'https://github.com/nehu3n/mondjs',
+    finished: true,
+  },
+  {
+    title: 'FastCache',
+    description: '⚡ Blazing-fast, multi-algorithm in-memory database.',
+    link: 'https://github.com/nehu3n/fastcache',
+    finished: false,
+  }
+];
 ---
 
 <Layout title="Portfolio">
   <main class="mx-auto max-w-content px-6 pt-24">
     <Header />
-    
-    <section class="mb-24">
+
+    <section class="mb-16">
       <h1 class="text-4xl font-medium tracking-tight text-zinc-900 dark:text-zinc-100">
         Hi, I'm <span class="text-zinc-700 dark:text-zinc-300">Nehuén</span> 🐈
       </h1>
       <p class="mt-6 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
         I am a young and passionate developer, focused on developing tools and technologies that redefine the current paradigm.
       </p>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100 mb-8">Selected Projects</h2>
+      <div class="grid gap-6">
+        {projects.map(project => (
+          <Project {...project} />
+        ))}
+      </div>
     </section>
 </Layout>
