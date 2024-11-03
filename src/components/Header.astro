@@ -1,10 +1,5 @@
 ---
-const navItems = [
-  { label: 'Home', href: '/' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'About', href: '#about' },
-  { label: 'Blog', href: '/blog' },
-];
+import { NAV_ITEMS } from "../consts"
 ---
 
 <div id="header" class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-all duration-200">
@@ -12,7 +7,7 @@ const navItems = [
     <nav class="py-4">
       <div class="flex items-center justify-between">
         <ul class="flex items-center gap-8">
-          {navItems.map(item => (
+          {NAV_ITEMS.map(item => (
             <li>
               <a href={item.href} class="text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors hover:underline">
                 {item.label}

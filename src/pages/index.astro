@@ -3,26 +3,7 @@ import Header from '../components/Header.astro';
 import Project from "../components/Project.astro";
 import Layout from '../layouts/Layout.astro';
 
-const projects = [
-  {
-    title: 'Qipi',
-    description: '🦉 The blazing-fast, disk-efficient and deterministic package manager.',
-    link: 'https://github.com/nehu3n/qipi',
-    finished: false,
-  },
-  {
-    title: 'MondJS',
-    description: '🐛 Monadic error handling for JavaScript/TypeScript.',
-    link: 'https://github.com/nehu3n/mondjs',
-    finished: true,
-  },
-  {
-    title: 'FastCache',
-    description: '⚡ Blazing-fast, multi-algorithm in-memory database.',
-    link: 'https://github.com/nehu3n/fastcache',
-    finished: false,
-  }
-];
+import { PROJECTS } from "../consts" ;
 ---
 
 <Layout title="Portfolio">
@@ -41,7 +22,7 @@ const projects = [
     <section id="projects" class="mb-24">
       <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100 mb-8">Selected Projects</h2>
       <div class="grid gap-6">
-        {projects.map(project => (
+        {PROJECTS.map(project => (
           <Project {...project} />
         ))}
       </div>
