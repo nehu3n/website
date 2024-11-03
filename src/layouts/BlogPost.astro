@@ -24,23 +24,23 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <div class="relative">
       <Header />
 
-     	<main>
+     	<main class="mx-auto max-w-content px-6 pt-24">
 			<article>
 				<div>
 					{heroImage && <img class="w-full rounded-lg shadow-md" width={1020} height={510} src={heroImage} alt="" />}
 				</div>
-				<div class="prose mx-auto max-w-[720px] px-4 py-4 text-gray-900 dark:text-gray-100">
-					<div class="title mb-4 py-4 text-center">
-						<div class="date mb-2 text-gray-600 dark:text-gray-400">
+				<div class="mx-auto max-w-[720px] px-4 py-4 text-gray-900 dark:text-gray-100">
+					<div class="mb-4 py-4 text-center">
+            <h1 class="m-0 mb-2 text-4xl font-bold">{title}</h1>
+						<div class="mb-2 text-gray-600 dark:text-gray-400">
 							<FormattedDate date={pubDate} />
 							{updatedDate && (
-								<div class="last-updated-on italic">
+								<div class="italic">
 									Last updated on <FormattedDate date={updatedDate} />
 								</div>
 							)}
 						</div>
-						<h1 class="m-0 mb-2 text-3xl">{title}</h1>
-						<hr />
+						<hr class="my-4 border-t border-zinc-400 dark:border-zinc-600" />
 					</div>
 					<slot />
 				</div>
