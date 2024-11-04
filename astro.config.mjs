@@ -5,5 +5,5 @@ import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 
 export default defineConfig({
-  integrations: [tailwind(), mdx(), sitemap()],
+	integrations: [tailwind(), mdx(), sitemap()],
 });

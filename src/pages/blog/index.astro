@@ -1,12 +1,12 @@
 ---
-import Header from '../../components/Header.astro';
-import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
-import Footer from '../../components/Footer.astro';
-import Post from '../../components/Post.astro';
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import Footer from "../../components/Footer.astro";
+import Post from "../../components/Post.astro";
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---

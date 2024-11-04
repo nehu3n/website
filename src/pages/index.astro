@@ -1,14 +1,14 @@
 ---
-import Header from '../components/Header.astro';
+import Header from "../components/Header.astro";
 import Project from "../components/Project.astro";
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
-import Post from '../components/Post.astro';
+import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Post from "../components/Post.astro";
 
-import { PROJECTS } from "../consts" ;
-import { getCollection } from 'astro:content';
+import { PROJECTS } from "../consts";
+import { getCollection } from "astro:content";
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
