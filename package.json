@@ -5,6 +5,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "lint": "biome lint --write .",
+    "fmt": "biome format --write .",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -18,5 +20,8 @@
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.15.3",
     "tailwindcss": "^3.4.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4"
   }
 }
