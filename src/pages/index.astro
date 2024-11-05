@@ -26,14 +26,25 @@ const posts = (await getCollection("blog")).sort(
       </p>
     </section>
 
-    <section id="projects" class="mb-16">
-      <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100 mb-8">Selected Projects</h2>
-      <div class="grid gap-6">
-        {PROJECTS.slice(0, 3).map(project => (
-          <Project {...project} />
-        ))}
-      </div>
-    </section>
+<section id="projects" class="mb-16">
+  <div class="flex items-center justify-between mb-8">
+    <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100">Selected Projects</h2>
+    <a 
+      href="/projects" 
+      class="text-md font-medium text-blue-600 dark:text-blue-400 hover:underline transition-colors"
+      aria-label="See all projects"
+    >
+      See all
+    </a>
+  </div>
+  
+  <div class="grid gap-6">
+    {PROJECTS.slice(0, 3).map(project => (
+      <Project {...project} />
+    ))}
+  </div>
+</section>
+
 
     <section id="about" class="mb-16">
       <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100 mb-6">About</h2>
@@ -49,7 +60,16 @@ const posts = (await getCollection("blog")).sort(
     </section>
 
     <section id="posts" class="mb-16">
-      <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100 mb-8">Recent Posts</h2>
+    <div class="flex items-center justify-between mb-8">
+    <h2 class="text-2xl font-medium text-zinc-900 dark:text-zinc-100">Recent Posts</h2>
+    <a 
+      href="/blog" 
+      class="text-md font-medium text-blue-600 dark:text-blue-400 hover:underline transition-colors"
+      aria-label="See all posts"
+    >
+      See all
+    </a>
+  </div>
       <ul class="grid gap-8 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
         {posts.slice(0, 3).map((post) => (
           <Post slug={post.slug} title={post.data.title} description={post.data.description} pubDate={post.data.pubDate} heroImage={post.data.heroImage} updatedDate={post.data.updatedDate} />
