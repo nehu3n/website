@@ -1,4 +1,6 @@
 export const PROJECTS = [
+  // Selected projects //
+
   {
     title: "Qipi",
     description:
@@ -17,6 +19,15 @@ export const PROJECTS = [
     description: "⚡ Blazing-fast, multi-algorithm in-memory database.",
     link: "https://github.com/nehu3n/fastcache",
     finished: false,
+  },
+
+  // Other projects //
+
+  {
+    title: "LK3",
+    description: "🔗 Fast, easy and free URL shortener.",
+    link: "https://github.com/nehu3n/lk3",
+    finished: true,
   },
 ];
 
