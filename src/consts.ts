@@ -9,19 +9,27 @@ export const PROJECTS = [
     finished: false,
   },
   {
+    title: "Xona",
+    description:
+      "🌌 A minimalist, extensible, fast and efficient terminal text editor.",
+    link: "https://github.com/nehu3n/xona",
+    finished: true,
+  },
+  {
     title: "MondJS",
     description: "🐛 Monadic error handling for JavaScript/TypeScript.",
     link: "https://github.com/nehu3n/mondjs",
     finished: true,
   },
+
+  // Other projects //
+
   {
     title: "FastCache",
-    description: "⚡ Blazing-fast, multi-algorithm in-memory database.",
+    description: "⚡ Blazing-fast, multi-algorithm in-memory cache.",
     link: "https://github.com/nehu3n/fastcache",
     finished: false,
   },
-
-  // Other projects //
 
   {
     title: "LK3",
