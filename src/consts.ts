@@ -1,4 +1,6 @@
 export const PROJECTS = [
+  // Selected projects //
+
   {
     title: "Qipi",
     description:
@@ -7,16 +9,33 @@ export const PROJECTS = [
     finished: false,
   },
   {
+    title: "Xona",
+    description:
+      "🌌 A minimalist, extensible, fast and efficient terminal text editor.",
+    link: "https://github.com/nehu3n/xona",
+    finished: true,
+  },
+  {
     title: "MondJS",
     description: "🐛 Monadic error handling for JavaScript/TypeScript.",
     link: "https://github.com/nehu3n/mondjs",
     finished: true,
   },
+
+  // Other projects //
+
   {
     title: "FastCache",
-    description: "⚡ Blazing-fast, multi-algorithm in-memory database.",
+    description: "⚡ Blazing-fast, multi-algorithm in-memory cache.",
     link: "https://github.com/nehu3n/fastcache",
     finished: false,
+  },
+
+  {
+    title: "LK3",
+    description: "🔗 Fast, easy and free URL shortener.",
+    link: "https://github.com/nehu3n/lk3",
+    finished: true,
   },
 ];
 
