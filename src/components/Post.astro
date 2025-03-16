@@ -2,40 +2,49 @@
 import FormattedDate from "./FormattedDate.astro";
 
 interface Props {
-	slug: string;
-	heroImage?: string;
-	title?: string;
-	pubDate?: Date;
-	updatedDate?: Date;
-	description?: string;
+    slug: string;
+    heroImage?: string;
+    title?: string;
+    pubDate?: Date;
+    updatedDate?: Date;
+    description?: string;
 }
 
 const data = Astro.props;
 ---
 
-<li class="group max-w-2xl mx-auto">
-            <a href={`/blog/${data.slug}/`} class="block rounded-lg overflow-hidden bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
-              {data.heroImage && (
+<li class="group w-full mx-auto">
+    <a
+        href={`/blog/${data.slug}/`}
+        class="block rounded-lg overflow-hidden bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700"
+    >
+        {
+            data.heroImage && (
                 <img
-                  class="w-full h-64 object-cover transition-transform group-hover:scale-105"
-                  width={720}
-                  height={360}
-                  src={data.heroImage}
-                  alt=""
+                    class="w-full h-64 object-cover transition-transform group-hover:scale-105"
+                    width={720}
+                    height={360}
+                    src={data.heroImage}
+                    alt=""
                 />
-              )}
-              <div class="p-5">
-                <div class="flex justify-between items-center">
-                  <h4 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-700 dark:group-hover:text-zinc-300">
+            )
+        }
+        <div class="p-5">
+            <div class="flex justify-between items-center">
+                <h4
+                    class="text-xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-zinc-700 dark:group-hover:text-zinc-300"
+                >
                     {data.title}
-                  </h4>
-                  <p class="text-sm ml-2 underline text-zinc-600 dark:text-zinc-400">
+                </h4>
+                <p
+                    class="text-sm ml-2 underline text-zinc-600 dark:text-zinc-400"
+                >
                     <FormattedDate date={data.pubDate} />
-                  </p>
-                </div>
-                <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-                  {data.description}
                 </p>
-              </div>
-            </a>
-          </li>
+            </div>
+            <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                {data.description}
+            </p>
+        </div>
+    </a>
+</li>
