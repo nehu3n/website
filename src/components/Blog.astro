@@ -1,21 +1,11 @@
 ---
-type Post = {
-  title: string;
-  description: string;
-  pubDate: Date;
-  slug: string;
-  tags: string[];
-};
+import { getCollection } from "astro:content";
 
-const posts: Post[] = [
-  {
-    title: "",
-    description: "",
-    pubDate: new Date('2025-06-25'), 
-    slug: "",
-    tags: []
-  },
-];
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+).slice(0, 3);
+
+const tags = posts.flatMap((post) => post.data.tags || []);
 ---
 
 <section class="py-20" id="blog">
@@ -34,8 +24,8 @@ const posts: Post[] = [
         <div class="bg-dark-200 rounded-lg border border-dark-100 hover:border-dark-50 transition-all duration-300 hover:bg-dark-100 group">
           <div class="p-6">
             <div class="flex items-center justify-between mb-3">
-              <time datetime={post.pubDate.toISOString()} class="text-gray-500 font-mono text-xs">
-                {post.pubDate.toLocaleDateString('en-us', {
+              <time datetime={new Date(post.pubDate).toISOString()} class="text-gray-500 font-mono text-xs">
+                {new Date(post.pubDate).toLocaleDateString('en-us', {
                   year: 'numeric',
                   month: 'short',
                   day: 'numeric',
@@ -43,7 +33,7 @@ const posts: Post[] = [
               </time>
               
               <div class="flex gap-2">
-                {post.tags.slice(0, 2).map((tag) => (
+                {tags.slice(0, 2).map((tag) => (
                   <span class="px-2 py-1 bg-dark-300 text-gray-400 font-mono text-xs rounded border border-dark-200">
                     {tag}
                   </span>
