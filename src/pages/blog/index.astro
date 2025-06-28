@@ -3,6 +3,7 @@ import BaseHead from '../../components/BaseHead.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
 import BlogCard from '../../components/BlogCard.astro';
+import Header from '../../components/Header.astro';
 
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
@@ -15,6 +16,7 @@ const posts = (await getCollection('blog')).sort(
 		<BaseHead title="blog - nehuén" description="thoughts on systems, performance, and the art of building quiet software" />
 	</head>
 	<body class="bg-dark-400 text-gray-100 font-sans antialiased">
+		<Header />
 		<main class="py-12">
 			<div class="w-full max-w-4xl mx-auto px-4 md:px-8">
 				<header class="text-center mb-16">
