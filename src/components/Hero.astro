@@ -2,22 +2,26 @@
 const techs = ['rust', 'go', 'elixir', 'typescript', 'c', 'compilers', 'p2p', 'backend'];
 ---
 
-<section class="min-h-screen flex items-center justify-center px-4 animate-fade-in">
-    <div class="text-center w-full max-w-4xl mx-auto px-4 md:px-8">
-      <h1 class="text-6xl md:text-8xl font-light tracking-tight mb-6 text-white">
-        nehuén
-      </h1>
-      
-      <p class="text-xl md:text-2xl text-gray-400 font-light mb-12 tracking-wide">
-        building fast, quiet systems
-      </p>
-      
-      <div class="flex flex-wrap justify-center gap-3 animate-slide-up">
-        {techs.map((tech) => (
-          <span class="px-4 py-2 bg-dark-200 text-gray-300 font-mono text-sm rounded-md border border-dark-100 hover:border-dark-50 transition-colors duration-300">
-            {tech}
-          </span>
-        ))}
-      </div>
+<section class="min-h-screen flex items-center justify-center px-4 animate-fade-in relative">
+  <div class="text-center w-full max-w-4xl mx-auto px-4 md:px-8">
+    <h1 class="text-6xl md:text-8xl font-light tracking-tight mb-6 text-white">
+      nehuén
+    </h1>
+
+    <p class="text-xl md:text-2xl text-gray-400 font-light mb-12 tracking-wide">
+      building fast, quiet systems
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-3 animate-slide-up">
+      {techs.map((tech) => (
+        <span class="px-4 py-2 bg-dark-200 text-gray-300 font-mono text-sm rounded-md border border-dark-100 hover:border-dark-50 transition-colors duration-300">
+          {tech}
+        </span>
+      ))}
     </div>
-  </section>
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 animate-bounce text-white text-3xl opacity-60">
+    ↓
+  </div>
+</section>
