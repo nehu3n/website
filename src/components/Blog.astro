@@ -1,0 +1,80 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+).slice(0, 3);
+
+const tags = posts.flatMap((post) => post.data.tags || []);
+---
+
+<section class="py-20" id="blog">
+  <div class="w-full max-w-4xl mx-auto px-4 md:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-light text-white mb-4">
+        blog
+      </h2>
+      <p class="text-gray-400 font-light max-w-2xl mx-auto">
+        thoughts on systems, performance, and the art of building quiet software
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      {posts.map((post) => (
+        <div class="bg-dark-200 rounded-lg border border-dark-100 hover:border-dark-50 transition-all duration-300 hover:bg-dark-100 group">
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-3">
+              <time datetime={new Date(post.data.pubDate).toISOString()} class="text-gray-500 font-mono text-xs">
+                {new Date(post.data.pubDate).toLocaleDateString('en-us', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+              
+              <div class="flex gap-1">
+                {tags.slice(0, 2).map((tag) => (
+                  <span class="px-2 py-1 bg-dark-300 text-gray-400 font-mono text-xs rounded border border-dark-200">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            
+            <h3 class="text-xl font-medium text-white group-hover:text-gray-100 mb-3 font-mono">
+              <a href={`/blog/${post.data.slug}`} class="hover:underline">
+                {post.data.title}
+              </a>
+            </h3>
+            
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              {post.data.description}
+            </p>
+            
+            <a 
+              href={`/blog/${post.data.slug}`}
+              class="text-gray-500 hover:text-gray-300 font-mono text-xs transition-colors duration-200 inline-flex items-center gap-1"
+            >
+              read more
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center">
+      <a 
+        href="/blog" 
+        class="inline-flex items-center gap-2 px-6 py-3 bg-dark-200 text-gray-300 font-mono text-sm rounded-md border border-dark-100 hover:border-dark-50 hover:bg-dark-100 transition-all duration-300"
+      >
+        view all posts
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
