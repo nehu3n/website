@@ -1,80 +1,86 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import Header from "../components/Header.astro";
-import FormattedDate from "../components/FormattedDate.astro";
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import { Image } from 'astro:assets';
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<'blog'>['data'];
 
-const { title, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Nehuén's portfolio and personal blog. 🐈" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/dark-favicon.png" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" type="image/png" href="/light-favicon.png" media="(prefers-color-scheme: light)" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
-  <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100 relative min-h-screen transition-colors duration-200">
-    <div class="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-zinc-900 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
-    <div class="relative">
-      <Header />
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
 
-     	<main class="mx-auto max-w-content px-6 pt-24">
+	<body>
+		<Header />
+		<main>
 			<article>
-				<div>
-					{heroImage && <img class="w-full rounded-lg shadow-md" width={1020} height={510} src={heroImage} alt="" />}
+				<div class="hero-image">
+					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
 				</div>
-				<div class="mx-auto max-w-[720px] px-4 py-4 text-gray-900 dark:text-gray-100">
-					<div class="mb-4 py-4 text-center">
-            <h1 class="m-0 mb-2 text-4xl font-bold">{title}</h1>
-						<div class="mb-2 text-gray-600 dark:text-gray-400">
+				<div class="prose">
+					<div class="title">
+						<div class="date">
 							<FormattedDate date={pubDate} />
-							{updatedDate && (
-								<div class="italic">
-									Last updated on <FormattedDate date={updatedDate} />
-								</div>
-							)}
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
 						</div>
-						<hr class="my-4 border-t border-zinc-400 dark:border-zinc-600" />
+						<h1>{title}</h1>
+						<hr />
 					</div>
 					<slot />
 				</div>
 			</article>
 		</main>
-    </div>
-  </body>
+		<Footer />
+	</body>
 </html>
-
-<script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
-  })();
-    
-  if (theme === 'light') {
-    document.documentElement.classList.remove('dark');
-  } else {
-    document.documentElement.classList.add('dark');
-  }
-
-  window.localStorage.setItem('theme', theme);
-</script>
-
-<style is:global>
-  html {
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-</style>

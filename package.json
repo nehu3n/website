@@ -7,28 +7,27 @@
 		"dev": "astro dev",
 		"lint": "biome lint --write .",
 		"fmt": "biome format --write .",
-		"start": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/check": "^0.9.4",
-		"@astrojs/mdx": "^3.1.9",
-		"@astrojs/rss": "^4.0.9",
-		"@astrojs/sitemap": "^3.2.1",
-		"@astrojs/tailwind": "^5.1.2",
-		"astro": "^4.16.13",
-		"tailwindcss": "^3.4.1"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4"
+		"@astrojs/mdx": "^4.3.0",
+		"@astrojs/rss": "^4.0.12",
+		"@astrojs/sitemap": "^3.4.1",
+		"@tailwindcss/vite": "^4.1.11",
+		"astro": "^5.10.1",
+		"sharp": "^0.34.2",
+		"tailwindcss": "^4.1.11"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
-			"@biomejs/biome",
+			"@tailwindcss/oxide",
 			"esbuild",
 			"sharp"
 		]
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.0.6"
 	}
 }
