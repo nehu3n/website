@@ -1,0 +1,8 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "nh3",
+    "compatibility_date": "2025-06-25",
+    "assets": {
+      "directory": "./dist"
+    }
+  }
