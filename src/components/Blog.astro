@@ -24,8 +24,8 @@ const tags = posts.flatMap((post) => post.data.tags || []);
         <div class="bg-dark-200 rounded-lg border border-dark-100 hover:border-dark-50 transition-all duration-300 hover:bg-dark-100 group">
           <div class="p-6">
             <div class="flex items-center justify-between mb-3">
-              <time datetime={new Date(post.pubDate).toISOString()} class="text-gray-500 font-mono text-xs">
-                {new Date(post.pubDate).toLocaleDateString('en-us', {
+              <time datetime={new Date(post.data.pubDate).toISOString()} class="text-gray-500 font-mono text-xs">
+                {new Date(post.data.pubDate).toLocaleDateString('en-us', {
                   year: 'numeric',
                   month: 'short',
                   day: 'numeric',
@@ -42,17 +42,17 @@ const tags = posts.flatMap((post) => post.data.tags || []);
             </div>
             
             <h3 class="text-xl font-medium text-white group-hover:text-gray-100 mb-3 font-mono">
-              <a href={`/blog/${post.slug}`} class="hover:underline">
-                {post.title}
+              <a href={`/blog/${post.data.slug}`} class="hover:underline">
+                {post.data.title}
               </a>
             </h3>
             
             <p class="text-gray-400 text-sm leading-relaxed mb-4">
-              {post.description}
+              {post.data.description}
             </p>
             
             <a 
-              href={`/blog/${post.slug}`}
+              href={`/blog/${post.data.slug}`}
               class="text-gray-500 hover:text-gray-300 font-mono text-xs transition-colors duration-200 inline-flex items-center gap-1"
             >
               read more
