@@ -28,7 +28,8 @@
 		"onlyBuiltDependencies": [
 			"@tailwindcss/oxide",
 			"esbuild",
-			"sharp"
+			"sharp",
+			"workerd"
 		]
 	},
 	"devDependencies": {
