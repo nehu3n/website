@@ -21,6 +21,8 @@
 		"@astrojs/sitemap": "^3.4.1",
 		"@tailwindcss/vite": "^4.1.11",
 		"astro": "^5.10.1",
+		"astro-mermaid": "^1.0.4",
+		"mermaid": "^11.9.0",
 		"sharp": "^0.34.2",
 		"tailwindcss": "^4.1.11"
 	},
