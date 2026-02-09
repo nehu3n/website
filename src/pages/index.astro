@@ -1,39 +1,69 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-
-import Hero from '../components/Hero.astro';
-import Projects from '../components/Projects.astro';
-import About from '../components/About.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-import Blog from '../components/Blog.astro';
+import BaseHead from "../components/BaseHead.astro";
+import Hero from "../components/Hero.astro";
+import Projects from "../components/Projects.astro";
+import About from "../components/About.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import Blog from "../components/Blog.astro";
+import CatExperience from "../components/CatExperience.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-pure-black text-zinc-400">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title="nehuén" description="systems & backend programmer" />
 	</head>
-	<body class="bg-dark-400 text-gray-100 font-sans antialiased">
-		<main>
+	<body class="selection:bg-zinc-100 selection:text-pure-black antialiased font-sans uppercase">
+		<CatExperience />
+		<main class="relative z-10">
 			<Hero />
-			<Projects />
-			<Blog />
-			<About />
-			<Contact />
+			<div class="space-y-48 pb-32">
+				<Projects />
+				<Blog />
+				<About />
+				<Contact />
+			</div>
 			<Footer />
-		  </main>
+		</main>
+		
+		<div class="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(24,24,27,0.5),rgba(0,0,0,1))] -z-10 pointer-events-none"></div>
 	</body>
 </html>
 
 <style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=JetBrains+Mono:wght@100;200;300;400&display=swap');
+
+	* {
+		text-transform: lowercase;
+	}
+
 	html {
 	  scroll-behavior: smooth;
+	  background-color: #000000;
 	}
 	
 	body {
 	  margin: 0;
 	  min-height: 100vh;
+	}
+
+	::selection {
+		background: #ffffff;
+		color: #000000;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background: #000000;
+	}
+	::-webkit-scrollbar-thumb {
+		background: #18181b;
+		border-radius: 4px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: #27272a;
 	}
 </style>

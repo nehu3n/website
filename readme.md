@@ -1,38 +1,40 @@
----
+# nehuén
 
-# 🌹 My personal website
+> building fast, quiet systems.
 
-In this repository you can find my website: **portfolio** and **blog**. Hosted in [CloudFlare](https://cloudflare.com) and [Vercel](https://vercel.com). 🚀
+this is the source code for my personal website — a minimalist space for my projects, experiments, and technical writings.
 
-![Astro](https://img.shields.io/badge/astro-%232C2052.svg?style=for-the-badge&logo=astro&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
-![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white)
-![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+## philosophy
 
-## ✨ Use in local
+the web should be fast, quiet, and efficient. no bloat, just content and performance. this site follows a strict aesthetic of pure black and zinc tones, focusing on readability and technical clarity.
 
-1. First, _clone the repository_ with:
+## stack
+
+- **framework**: [astro](https://astro.build)
+- **styling**: [tailwindcss](https://tailwindcss.com) (utility-first, pure custom theme)
+- **hosting**: [cloudflare pages](https://pages.cloudflare.com)
+- **fonts**: inter & jetbrains mono
+
+## development
+
+### 1. clone
 
 ```bash
 git clone https://github.com/nehu3n/website.git
 ```
 
-2. Then, _install the dependencies_ with:
+### 2. install
 
 ```bash
-cd website
 pnpm install
 ```
 
-3. Finally, _start the development server_ with:
+### 3. run
 
 ```bash
 pnpm dev
 ```
 
-**¡Ready! 🚀**
+## license
 
-## 📄 License
-
-This repository is licensed under the [MIT license](./LICENSE).
+this project is licensed under the [mit license](./license).

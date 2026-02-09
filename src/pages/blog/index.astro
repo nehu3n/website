@@ -1,78 +1,96 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import { getCollection } from 'astro:content';
-import BlogCard from '../../components/BlogCard.astro';
-import Header from '../../components/Header.astro';
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import CatExperience from "../../components/CatExperience.astro";
+import { getCollection } from "astro:content";
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getCollection("blog")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-pure-black text-zinc-400">
 	<head>
-		<BaseHead title="blog - nehuén" description="thoughts on systems, performance, and the art of building quiet software" />
+		<BaseHead title="writing - nehuén" description="thoughts on systems, performance, and the art of building quiet software" />
 	</head>
-	<body class="bg-dark-400 text-gray-100 font-sans antialiased">
-		<Header />
-		<main class="py-12">
-			<div class="w-full max-w-4xl mx-auto px-4 md:px-8">
-				<header class="text-center mb-16">
-					<h1 class="text-4xl md:text-5xl font-light text-white mb-4">
-						blog
-					</h1>
-					<p class="text-gray-400 font-light max-w-2xl mx-auto">
-						thoughts on systems, performance, and the art of building quiet software
-					</p>
-					<div class="w-24 h-px bg-dark-100 mx-auto mt-8"></div>
-				</header>
+	<body class="selection:bg-zinc-100 selection:text-pure-black antialiased font-sans">
+		<CatExperience />
+		<main class="py-24 relative z-10">
+			<div class="w-full max-w-5xl mx-auto px-4 md:px-8">
+				<div class="flex items-center gap-4 mb-24">
+					<h1 class="text-3xl font-light tracking-[0.3em] text-white uppercase">archive</h1>
+					<div class="h-[1px] flex-1 bg-zinc-800"></div>
+				</div>
 				
 				{posts.length > 0 ? (
-					<div class="grid gap-8">
-						{posts[0] && (
-							<div class="mb-12">
-								<BlogCard 
-									title={posts[0].data.title}
-									description={posts[0].data.description}
-									pubDate={posts[0].data.pubDate}
-									slug={posts[0].data.slug}
-									heroImage={posts[0].data.heroImage?.src}
-									tags={posts[0].data.tags}
-								/>
-							</div>
-						)}
-						
-						{posts.length > 1 && (
-							<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-								{posts.slice(1).map((post) => (
-									<BlogCard 
-										title={post.data.title}
-										description={post.data.description}
-										pubDate={post.data.pubDate}
-										slug={post.data.slug}
-										heroImage={post.data.heroImage?.src}
-										tags={post.data.tags}
-									/>
-								))}
-							</div>
-						)}
+					<div class="grid gap-20">
+						{posts.map((post) => (
+							<a href={`/blog/${post.data.slug}`} class="group block border-b border-zinc-900 pb-20 last:border-0 hover:border-zinc-500 transition-colors duration-700">
+								<div class="flex flex-col md:flex-row md:items-start justify-between gap-8">
+									<div class="space-y-6 max-w-3xl">
+										<time datetime={new Date(post.data.pubDate).toISOString()} class="text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
+											{new Date(post.data.pubDate).toLocaleDateString('en-us', {
+												year: 'numeric',
+												month: 'short',
+												day: 'numeric',
+											})}
+										</time>
+										
+										<h2 class="text-3xl md:text-4xl font-light text-zinc-100 group-hover:text-white transition-colors duration-700 tracking-tight leading-tight">
+											{post.data.title}
+										</h2>
+										
+										<p class="text-lg text-zinc-500 font-light leading-relaxed group-hover:text-zinc-400 transition-colors duration-700">
+											{post.data.description}
+										</p>
+									</div>
+									
+									<div class="text-zinc-800 group-hover:text-zinc-100 transition-all duration-700 translate-x-[-10px] group-hover:translate-x-0 pt-2">
+										<svg class="w-8 h-8 font-thin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+											<path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+										</svg>
+									</div>
+								</div>
+							</a>
+						))}
 					</div>
 				) : (
-					<div class="text-center py-20">
-						<div class="bg-dark-200 rounded-lg p-12 border border-dark-100 max-w-md mx-auto">
-							<p class="text-gray-400 font-mono text-sm mb-4">
-								no posts yet
-							</p>
-							<p class="text-gray-500 text-xs">
-								check back soon for thoughts on systems and performance
-							</p>
-						</div>
+					<div class="py-20 border border-zinc-900 flex items-center justify-center">
+						<p class="text-zinc-600 font-mono text-xs uppercase tracking-widest">no posts found_</p>
 					</div>
 				)}
+
+				<div class="mt-32">
+					<a 
+						href="/" 
+						class="group inline-flex items-center gap-4 text-zinc-500 hover:text-white transition-all duration-500 font-mono text-xs uppercase tracking-[0.3em]"
+					>
+						<div class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-white transition-all duration-500"></div>
+						<span>back to home</span>
+					</a>
+				</div>
 			</div>
 		</main>
 		<Footer />
+		<div class="fixed inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(24,24,27,0.3),rgba(0,0,0,1))] -z-10 pointer-events-none"></div>
 	</body>
 </html>
+
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=JetBrains+Mono:wght@100;200;300;400&display=swap');
+
+	* {
+		text-transform: lowercase;
+	}
+
+	html {
+	  scroll-behavior: smooth;
+	  background-color: #000000;
+	}
+	
+	body {
+	  margin: 0;
+	  min-height: 100vh;
+	}
+</style>

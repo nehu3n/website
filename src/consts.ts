@@ -1,2 +1,3 @@
-export const SITE_TITLE = 'Nehuén portfolio';
-export const SITE_DESCRIPTION = 'I\'m a systems and backend programmer. Enthusiast of reinventing the wheel.';
+export const SITE_TITLE = "nehuén portfolio";
+export const SITE_DESCRIPTION =
+	"i'm a systems and backend programmer. enthusiast of reinventing the wheel.";

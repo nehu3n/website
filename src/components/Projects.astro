@@ -1,107 +1,121 @@
 ---
 type Project = {
-  title: string;
-  description: string;
-  tech: string[];
-  repo?: string;
+	title: string;
+	description: string;
+	tech: string[];
+	repo?: string;
 };
 
 const projects: Project[] = [
-  {
-    title: "Kito",
-    description: "🦊 A backend web framework for TypeScript written in Rust, with maximum performance. [WIP]",
-    tech: ["rust", "typescript"],
-    repo: "https://github.com/kitojs/kito"
-  },
-  {
-    title: "Qipi",
-    description: "🦉 An extremely fast and disk-efficient package manager for NodeJS written in Rust. [WIP]",
-    tech: ["rust"],
-    repo: "https://github.com/nehu3n/qipi/tree/rewrite"
-  },
-  {
-    title: "Xona",
-    description: "🌌 A minimalist, extensible, fast and efficient terminal text editor.",
-    tech: ["go"],
-    repo: "https://github.com/nehu3n/xona"
-  },
-  {
-    title: "Minargs",
-    description: "🚀 Ultra-lightweight, blazing-fast, zero-dependency CLI parser — inspired by Clap.",
-    tech: ["rust"],
-    repo: "https://github.com/nehu3n/minargs"
-  },
-  {
-    title: "Cass",
-    description: "🤖 A commit assistant that follows Conventional Commits, written in Go.",
-    tech: ["go"],
-    repo: "https://github.com/nehu3n/cass"
-  },
-  {
-    title: "MondJS",
-    description: "🐛 A monadic error handling library for TypeScript, inspired by Rust.",
-    tech: ["typescript"],
-    repo: "https://github.com/nehu3n/mondjs"
-  },
-  {
-    title: "FastCache",
-    description: "⚡️ A very fast, unified, multi-algorithm in-memory cache in TypeScript. [WIP]",
-    tech: ["typescript"],
-    repo: "https://github.com/nehu3n/fastcache"
-  },
-  {
-    title: "FFI Wrapper",
-    description: "☎ A lightweight, optimized and simple FFI wrapper for NodeJS, Deno and Bun.",
-    tech: ["typescript"],
-    repo: "https://github.com/nehu3n/ffi-wrapper"
-  },
-  {
-    title: "LiteColor",
-    description: "🎨 An ultra-tiny and elegant console style library compatible with any environment.",
-    tech: ["typescript"],
-    repo: "https://github.com/nehu3n/litecolor"
-  }
+	{
+		title: "kito",
+		description:
+			"🦊 backend web framework for typescript written in rust, with maximum performance. [wip]",
+		tech: ["rust", "typescript"],
+		repo: "https://github.com/kitojs/kito",
+	},
+	{
+		title: "qipi",
+		description:
+			"🦉 an extremely fast and disk-efficient package manager for nodejs written in rust. [wip]",
+		tech: ["rust"],
+		repo: "https://github.com/nehu3n/qipi/tree/rewrite",
+	},
+	{
+		title: "xona",
+		description:
+			"🌌 a minimalist, extensible, fast and efficient terminal text editor.",
+		tech: ["go"],
+		repo: "https://github.com/nehu3n/xona",
+	},
+	{
+		title: "minargs",
+		description:
+			"🚀 ultra-lightweight, blazing-fast, zero-dependency cli parser — inspired by clap.",
+		tech: ["rust"],
+		repo: "https://github.com/nehu3n/minargs",
+	},
+	{
+		title: "cass",
+		description:
+			"🤖 a commit assistant that follows conventional commits, written in go.",
+		tech: ["go"],
+		repo: "https://github.com/nehu3n/cass",
+	},
+	{
+		title: "mondjs",
+		description:
+			"🐛 a monadic error handling library for typescript, inspired by rust.",
+		tech: ["typescript"],
+		repo: "https://github.com/nehu3n/mondjs",
+	},
+	{
+		title: "fastcache",
+		description:
+			"⚡ a very fast, unified, multi-algorithm in-memory cache in typescript. [wip]",
+		tech: ["typescript"],
+		repo: "https://github.com/nehu3n/fastcache",
+	},
+	{
+		title: "ffi wrapper",
+		description:
+			"📱 a lightweight, optimized and simple ffi wrapper for nodejs, deno and bun.",
+		tech: ["typescript"],
+		repo: "https://github.com/nehu3n/ffi-wrapper",
+	},
+	{
+		title: "litecolor",
+		description:
+			"🎨 an ultra-tiny and elegant console style library compatible with any environment.",
+		tech: ["typescript"],
+		repo: "https://github.com/nehu3n/litecolor",
+	},
 ];
 ---
 
 <section class="py-20" id="projects">
-  <div class="w-full max-w-4xl mx-auto px-4 md:px-8">
-    <h2 class="text-4xl md:text-5xl font-light text-white mb-16 text-center">
-      projects
-    </h2>
+  <div class="w-full max-w-5xl mx-auto px-4 md:px-8">
+    <div class="flex items-center gap-4 mb-20">
+      <h2 class="text-3xl font-light tracking-widest text-white">projects</h2>
+      <div class="h-[1px] flex-1 bg-zinc-700"></div>
+    </div>
     
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project) => (
-        <div class="bg-dark-200 rounded-lg p-6 border border-dark-100 hover:border-dark-50 transition-all duration-300 hover:bg-dark-100 group">
-          <div class="flex justify-between items-start mb-4">
-            <h3 class="text-xl font-medium text-white group-hover:text-gray-100 font-mono">
-              {project.title}
-            </h3>
-            {project.repo && (
-              <a 
-                href={project.repo} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                class="text-gray-500 hover:text-gray-300 transition-colors duration-200"
-                aria-label="View repository"
-              >
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
-                </svg>
-              </a>
-            )}
-          </div>
+        <div class="group relative bg-pure-black p-8 border border-zinc-800 hover:border-zinc-500 transition-all duration-700">
+          <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.02] transition-opacity duration-700"></div>
           
-          <p class="text-gray-400 text-sm leading-relaxed mb-6">
-            {project.description}
-          </p>
-          
-          <div class="flex flex-wrap gap-2">
-            {project.tech.map((tech) => (
-              <span class="px-2 py-1 bg-dark-300 text-gray-400 font-mono text-xs rounded border border-dark-200">
-                {tech}
-              </span>
-            ))}
+          <div class="relative z-10">
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-lg font-light text-zinc-100 font-mono tracking-tight group-hover:text-white transition-colors">
+                {project.title}
+              </h3>
+              {project.repo && (
+                <a 
+                  href={project.repo} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="text-zinc-700 hover:text-white transition-colors duration-300"
+                  aria-label="view repository"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                  </svg>
+                </a>
+              )}
+            </div>
+            
+            <p class="text-zinc-500 text-sm leading-relaxed mb-8 font-light group-hover:text-zinc-400 transition-colors">
+              {project.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-4">
+              {project.tech.map((tech) => (
+                <span class="text-[10px] text-zinc-600 font-mono uppercase tracking-[0.2em]">
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       ))}

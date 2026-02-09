@@ -1,186 +1,150 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import CatExperience from "../components/CatExperience.astro";
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<"blog">["data"];
 
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-pure-black text-zinc-400">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title.toLowerCase()} description={description.toLowerCase()} />
   </head>
-  <body class="bg-dark-400 text-gray-100 font-sans antialiased">
-    <Header />
-    
-    <main class="py-12">
-      <article class="w-full max-w-4xl mx-auto px-4 md:px-8">
+  <body class="selection:bg-zinc-100 selection:text-pure-black antialiased font-sans">
+    <CatExperience />
+    <main class="py-24 relative z-10">
+      <article class="w-full max-w-3xl mx-auto px-4 md:px-8">
         {heroImage && (
-          <div class="mb-12 rounded-lg overflow-hidden">
+          <div class="mb-12 md:mb-20 overflow-hidden border border-zinc-900">
             <img 
               src={heroImage?.src} 
               alt={title}
-              class="w-full h-64 md:h-96 object-cover"
+              class="w-full grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out h-64 md:h-[400px] object-cover"
             />
           </div>
         )}
         
-        <header class="mb-12 text-center">
-          <div class="mb-4">
-            <FormattedDate date={pubDate} />
-            {updatedDate && (
-              <div class="text-gray-500 font-mono text-xs mt-2">
-                Last updated: <FormattedDate date={updatedDate} />
-              </div>
-            )}
+        <header class="mb-16 md:mb-24">
+          <div class="flex items-center gap-4 mb-8">
+            <time datetime={new Date(pubDate).toISOString()} class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+                {new Date(pubDate).toLocaleDateString('en-us', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                })}
+            </time>
+            <div class="h-[1px] flex-1 bg-zinc-800"></div>
           </div>
           
-          <h1 class="text-4xl md:text-5xl font-light text-white mb-6 leading-tight">
+          <h1 class="text-4xl md:text-6xl font-light text-white mb-8 leading-[1.1] tracking-tighter">
             {title}
           </h1>
           
-          <div class="w-24 h-px bg-dark-100 mx-auto"></div>
+          <p class="text-xl text-zinc-500 font-light leading-relaxed">
+            {description}
+          </p>
         </header>
 
-        <div class="prose prose-invert prose-lg max-w-none">
-          <div class="max-w-4xl mx-auto">
-            <slot />
-          </div>
+        <div class="prose prose-zinc prose-invert max-w-none">
+          <slot />
         </div>
         
-        <footer class="mt-16 pt-8 border-t border-dark-100">
-          <div class="text-center">
+        <footer class="mt-32 pt-12 border-t border-zinc-900">
             <a 
               href="/blog" 
-              class="inline-flex items-center gap-2 text-gray-400 hover:text-white font-mono text-sm transition-colors duration-300"
+              class="group inline-flex items-center gap-4 text-zinc-500 hover:text-white transition-all duration-500 font-mono text-xs uppercase tracking-[0.3em]"
             >
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              back to blog
+              <div class="w-12 h-[1px] bg-zinc-800 group-hover:w-20 group-hover:bg-white transition-all duration-500"></div>
+              <span>back to writing</span>
             </a>
-          </div>
         </footer>
       </article>
     </main>
     
     <Footer />
+    <div class="fixed inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(24,24,27,0.3),rgba(0,0,0,1))] -z-10 pointer-events-none"></div>
   </body>
 </html>
 
 <style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400&family=JetBrains+Mono:wght@100;200;300;400&display=swap');
+
+  * {
+    text-transform: lowercase;
+  }
+
   .prose {
-    color: #d1d5db;
+    --tw-prose-body: var(--color-zinc-400);
+    --tw-prose-headings: var(--color-white);
+    --tw-prose-links: var(--color-white);
+    --tw-prose-bold: var(--color-white);
+    --tw-prose-counters: var(--color-zinc-500);
+    --tw-prose-bullets: var(--color-zinc-700);
+    --tw-prose-hr: var(--color-zinc-900);
+    --tw-prose-quotes: var(--color-zinc-200);
+    --tw-prose-quote-borders: var(--color-zinc-800);
+    --tw-prose-captions: var(--color-zinc-500);
+    --tw-prose-code: var(--color-zinc-200);
+    --tw-prose-pre-code: var(--color-zinc-200);
+    --tw-prose-pre-bg: var(--color-zinc-950);
+    --tw-prose-th-borders: var(--color-zinc-800);
+    --tw-prose-td-borders: var(--color-zinc-900);
   }
-  
-  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-    color: #ffffff;
-    font-weight: 400;
-  }
-  
+
   .prose h2 {
-    font-size: 1.875rem;
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+    font-weight: 200;
+    letter-spacing: -0.02em;
+    font-size: 2.25rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
   }
-  
-  .prose h3 {
-    font-size: 1.5rem;
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-  }
-  
+
   .prose p {
-    margin-bottom: 1.5rem;
-    line-height: 1.75;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 2rem;
   }
-  
-  .prose a {
-    color: #9ca3af;
-    text-decoration: underline;
-    text-decoration-color: #374151;
-    transition: all 0.2s ease;
-  }
-  
-  .prose a:hover {
-    color: #ffffff;
-    text-decoration-color: #9ca3af;
-  }
-  
+
   .prose code {
-    background-color: #1a1a1a;
-    color: #d1d5db;
-    padding: 0.125rem 0.375rem;
+    font-weight: 400;
+    background: var(--color-zinc-900);
+    padding: 0.2em 0.4em;
     border-radius: 0.25rem;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-    font-size: 0.875em;
-    border: 1px solid #2a2a2a;
+    border: 1px solid var(--color-zinc-800);
+    text-decoration: none !important;
   }
-  
+
+  .prose code::before,
+  .prose code::after {
+    content: "" !important;
+  }
+
   .prose pre {
-    background-color: #0f0f0f;
-    border: 1px solid #2a2a2a;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    overflow-x: auto;
-    margin: 1.5rem 0;
+    border: 1px solid var(--color-zinc-900);
+    padding: 2rem !important;
+    border-radius: 0;
+    background-color: var(--color-zinc-950) !important;
   }
-  
+
   .prose pre code {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    color: #d1d5db;
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    text-decoration: none !important;
   }
-  
+
   .prose blockquote {
-    border-left: 4px solid #374151;
-    padding-left: 1.5rem;
-    margin: 1.5rem 0;
-    font-style: italic;
-    color: #9ca3af;
-  }
-  
-  .prose ul, .prose ol {
-    margin: 1.5rem 0;
-    padding-left: 1.5rem;
-  }
-  
-  .prose li {
-    margin: 0.5rem 0;
-  }
-  
-  .prose hr {
-    border: none;
-    height: 1px;
-    background-color: #2a2a2a;
-    margin: 2.5rem 0;
-  }
-  
-  .prose img {
-    border-radius: 0.5rem;
-    margin: 1.5rem 0;
-  }
-  
-  .prose table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 1.5rem 0;
-  }
-  
-  .prose th, .prose td {
-    border: 1px solid #2a2a2a;
-    padding: 0.75rem;
-    text-align: left;
-  }
-  
-  .prose th {
-    background-color: #1a1a1a;
-    font-weight: 500;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    border-left-width: 1px;
+    padding-left: 2rem;
+    color: var(--color-zinc-300);
   }
 </style>

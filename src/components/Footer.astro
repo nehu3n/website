@@ -1,10 +1,16 @@
 ---
 ---
 
-<footer class="py-8 border-t border-dark-100">
-	<div class="w-full max-w-4xl mx-auto px-4 md:px-8 text-center">
-	  <p class="text-gray-500 text-sm font-mono">
-		built with astro & tailwind 🐈‍⬛
+<footer class="py-12 border-t border-zinc-900">
+	<div class="w-full max-w-5xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+	  <p class="text-zinc-600 text-[10px] font-mono uppercase tracking-[0.3em]">
+		© {new Date().getFullYear()} nehuén — all rights reserved
 	  </p>
+	  <div class="flex items-center gap-4">
+		<span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+		<p class="text-zinc-400 text-[10px] font-mono uppercase tracking-[0.3em]">
+			built with astro & tailwind
+		</p>
+	  </div>
 	</div>
 </footer>

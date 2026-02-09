@@ -2,17 +2,33 @@
 ---
 
 <section class="py-20" id="about">
-    <div class="w-full max-w-4xl mx-auto px-4 md:px-8 text-center">
-      <h2 class="text-4xl md:text-5xl font-light text-white mb-12">
-        about
-      </h2>
+    <div class="w-full max-w-5xl mx-auto px-4 md:px-8">
+      <div class="flex items-center gap-4 mb-20">
+        <h2 class="text-3xl font-light tracking-widest text-white whitespace-nowrap">about me</h2>
+        <div class="h-[1px] flex-1 bg-zinc-700"></div>
+      </div>
       
-      <div class="bg-dark-200 rounded-lg p-8 border border-dark-100">
-        <p class="text-lg text-left leading-relaxed text-gray-300 max-w-3xl mx-auto">
-          I'm a <b>systems and backend programmer</b> with a strong focus on <b>compilers, language design, and decentralized networks.</b>
-          <br>
-          I've been building things for six years — and I'm not stopping anytime soon.
-        </p>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+          <p class="text-xl font-light leading-relaxed text-zinc-300">
+            i'm a <span class="text-white">systems and backend programmer</span> based in <span class="text-white">uruguay</span>.
+          </p>
+          <p class="text-lg font-light leading-relaxed text-zinc-500">
+            i focus on crafting <span class="text-zinc-300">high-performance systems, compilers, and decentralized architectures</span>. my work is driven by a deep curiosity for how things work under the hood.
+          </p>
+          <p class="text-lg font-light leading-relaxed text-zinc-500">
+            with over <span class="text-zinc-300">six years</span> of experience, i constantly push the boundaries of what's possible with code, always seeking the most elegant and efficient solutions.
+          </p>
+        </div>
+        
+        <div class="relative group">
+          <div class="absolute -inset-4 bg-zinc-100/5 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          <div class="relative aspect-square border border-zinc-800 flex items-center justify-center p-12 overflow-hidden">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" class="w-full h-full text-zinc-800 opacity-20 group-hover:text-zinc-100 group-hover:opacity-40 transition-all duration-700">
+               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
 </section>
